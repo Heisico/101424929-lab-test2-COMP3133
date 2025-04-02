@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: 101424929-lab-test2-comp3133
+    runtime: node
+    buildCommand: npm install && npm run build
+    staticPublishPath: "./dist/101424929-lab-test2-comp3133/browser"  # Path to built files
+    env: node
