@@ -1,0 +1,34 @@
+<div class="container" *ngIf="mission">
+    <h1>SpaceX Mission Details</h1>
+  
+    <div class="details-card">
+      <h2>{{mission.mission_name}}</h2>
+      <p>Flight #{{mission.flight_number}} ({{mission.launch_year}})</p>
+      
+      <img *ngIf="mission.links.mission_patch_small" 
+           [src]="mission.links.mission_patch_small" 
+           alt="Mission patch">
+  
+      <h3>Mission Details</h3>
+      <p>{{mission.details || 'No details available'}}</p>
+  
+      <h3>Rocket Information</h3>
+      <p><strong>Name:</strong> {{mission.rocket.rocket_name}}</p>
+      <p><strong>Type:</strong> {{mission.rocket.rocket_type}}</p>
+  
+      <h3>More Information</h3>
+      <div class="links">
+        <a *ngIf="mission.links.article_link" 
+           [href]="mission.links.article_link" 
+           target="_blank">Article</a>
+        <a *ngIf="mission.links.wikipedia" 
+           [href]="mission.links.wikipedia" 
+           target="_blank">Wikipedia</a>
+        <a *ngIf="mission.links.video_link" 
+           [href]="mission.links.video_link" 
+           target="_blank">Video</a>
+      </div>
+    </div>
+  
+    <button routerLink="/">Back to Missions</button>
+  </div>

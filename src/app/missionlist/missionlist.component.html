@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>SpaceX Mission Launch List</h1>
+  
+    <div class="filter-container">
+      <select [(ngModel)]="selectedYear" (change)="filterByYear(selectedYear)">
+        <option value="">All Years</option>
+        <option *ngFor="let year of years" [value]="year">{{year}}</option>
+      </select>
+    </div>
+  
+    <div class="missions-grid">
+      <div *ngFor="let mission of filteredMissions" class="mission-card">
+        <h2>{{mission.mission_name}}</h2>
+        <p>Flight #{{mission.flight_number}} ({{mission.launch_year}})</p>
+        <img *ngIf="mission.links.mission_patch_small" [src]="mission.links.mission_patch_small" alt="Mission patch">
+        <p>{{mission.details || 'No details available'}}</p>
+        <p><strong>Rocket:</strong> {{mission.rocket.rocket_name}} ({{mission.rocket.rocket_type}})</p>
+        <a [routerLink]="['/missions', mission.flight_number]">Details</a>
+      </div>
+    </div>
+  </div>
